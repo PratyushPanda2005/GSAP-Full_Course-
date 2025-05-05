@@ -1,0 +1,59 @@
+
+*{
+    overflow: hidden;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-image: url("https://img.freepik.com/free-photo/low-view-modern-skyscrapers-office-buildings_23-2148836791.jpg?t=st=1746450486~exp=1746454086~hmac=43b56d2dda1ceb93cac45af707cde05430669e070b0396b3afedb842e7d5f8a5&w=2000");
+    background-repeat: no-repeat;
+    font-family: "Host Grotesk", sans-serif;
+}
+
+line {
+    position: absolute;
+}
+
+main {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+
+    .content {
+        width: 70%;
+
+        h1 {
+            font-size: 3em;
+            position: relative;
+
+            span {
+                display: block;
+            }
+
+        }
+        
+        p {
+            font-size: 1.2em;
+            width: 80%;
+            line-height: 1.7em;
+            margin-bottom: 2em;
+        }
+    }
+}
+
+img {
+    width: 34%;
+    position: absolute;
+    right: 15%;
+    top: 20%;
+}
+
+a {
+    display: inline-block;
+    background: #B100F2;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em;
+}
