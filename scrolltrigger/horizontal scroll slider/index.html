@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizontal scroll Slider</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div>
+        <div>Pandaweb</div>
+        <div>One block at a time</div>
+      </div>
+      <div>Est 2017</div>
+    </nav>
+
+    <div class="marker-wrapper">
+      <div class="marker">
+        <div class="grab"></div>
+      </div>
+      <div class="active-slide">1/10</div>
+    </div>
+
+    <div class="slider">
+      <div class="slider-wrapper">
+        <div class="slide">
+          <img src="../../images/01.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/02.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/03.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/04.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/05.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/06.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/07.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/08.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/09.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="../../images/10.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>Elite web designs</div>
+      <div>Pandaweb 2025 &copy;</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script>
+      let target = 0;
+      let current = 0;
+      let ease = 0.075;
+      let isAnimating = false;
+
+      const sliderWrapper = document.querySelector(".slider-wrapper");
+      const markerWrapper = document.querySelector(".marker-wrapper");
+      const activeSlide = document.querySelector(".active-slide");
+      let maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+
+      function lerp(start, end, factor) {
+        if (Math.abs(end - start) < 0.5) return end;
+        return start + (end - start) * factor;
+      }
+
+      function updateActiveSliderNumber(markerMove, markerMaxMove) {
+        const partWidth = markerMaxMove / 10;
+        let currentPart = Math.round((markerMove - 70) / partWidth) + 1;
+        currentPart = Math.min(10, currentPart);
+        activeSlide.textContent = `${currentPart}/10`;
+      }
+
+      function update() {
+        const diff = Math.abs(target - current);
+
+        if (diff > 0.5) {
+          isAnimating = true;
+          current = lerp(current, target, ease);
+
+          gsap.set(".slider-wrapper", {
+            x: -current,
+            overwrite: "auto",
+          });
+
+          let moveRatio = current / maxScroll;
+          let markerMaxMove =
+            window.innerWidth - markerWrapper.offsetWidth - 170;
+          let markerMove = 70 + moveRatio * markerMaxMove;
+
+          gsap.set(".marker-wrapper", {
+            x: markerMove,
+            overwrite: "auto",
+          });
+
+          updateActiveSliderNumber(markerMove, markerMaxMove);
+
+          requestAnimationFrame(update);
+        } else {
+          isAnimating = false;
+          current = target;
+          gsap.set(".slider-wrapper", { x: -current });
+        }
+      }
+
+      window.addEventListener("resize", () => {
+        maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+      });
+
+      window.addEventListener("wheel", (e) => {
+        const prevTarget = target;
+        target += e.deltaY;
+        target = Math.max(0, target);
+        target = Math.min(maxScroll, target);
+
+        if (!isAnimating && prevTarget !== target) {
+          update();
+        }
+      });
+
+
+      gsap.set(".slider-wrapper", { willChange: "transform" });
+      gsap.set(".marker-wrapper", { willChange: "transform" });
+    </script>
+  </body>
+</html>

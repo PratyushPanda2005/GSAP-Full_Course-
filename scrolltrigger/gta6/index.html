@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTA 6 Intro Animation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-img-container">
+        <img src="./images/herogta.webp" alt="" />
+
+        <div class="hero-img-logo">
+          <img src="./svg/VICE_COAST_SYNDICATE.svg" alt="" />
+        </div>
+
+        <img src="./images/herogta-Photoroom.png" alt="" />
+
+        <div class="hero-img-copy">
+          <p>Scroll dwon to reveal</p>
+        </div>
+      </div>
+
+      <div class="fade-overlay"></div>
+
+      <div class="overlay">
+        <svg width="100%" height="100%">
+          <defs>
+            <mask id="logoRevealMask">
+              <rect width="100%" height="100%" fill="white" />
+              <path id="logoMask"></path>
+            </mask>
+          </defs>
+          <rect
+            width="100%"
+            height="100%"
+            fill="#111117"
+            mask="url(#logoRevealMask)"
+          />
+        </svg>
+      </div>
+
+      <div class="logo-container"></div>
+
+      <div class="overlay-copy">
+        <h1>
+          Animation <br />
+          By <br /> 
+          ❤️
+        </h1>
+      </div>
+    </section>
+    <section class="outro">
+      <p>Build your Empire. Rule your city</p>
+    </section>
+    
+    <script src="https://unpkg.com/lenis@1.3.3/dist/lenis.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script type="module" src="logo.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

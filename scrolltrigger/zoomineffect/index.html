@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="spacer"><h1>Start Scrolling</h1></section>
+
+<section class="image-unmask">
+
+<svg id="svg">
+  <defs>
+    <mask id="mask">
+      <rect width="100%" height="100%" fill="white"></rect>
+      <circle id="circle" cx="50%" cy="50%" r="60" fill="black"></circle>
+    </mask>
+  </defs>
+  <rect id="whiteLayer" width="100%" height="100%" fill="white"></rect>
+  <rect width="100%" height="100%" fill="black" mask="url(#mask)"></rect>
+</svg>
+<img id="img" src="kabiur-rahman-riyad-Bx21Qc3QiBA-unsplash.jpg" alt="Masked Image" />
+</section> 
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
